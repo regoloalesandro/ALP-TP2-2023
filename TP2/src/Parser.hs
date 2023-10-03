@@ -15,8 +15,8 @@ import           Untyped
 ----------------------------------------------
 
 num :: Integer -> LamTerm
-num 0 = Abs "s" (Abs "z" LVar "z")
-num n = Abs "s" (num n-1)
+num 0 = Abs "s" (Abs "z" (LVar "z"))
+num n = Abs "s" (num (n-1))
 -------------------------------------------------
 -- Parser de Lambda Cálculo (Gramatica Extendida) 
 -------------------------------------------------

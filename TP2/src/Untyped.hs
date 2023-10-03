@@ -14,18 +14,19 @@ import           Common
 conversion :: LamTerm -> Term
 conversion = conversion' []
 conversion' :: [String] -> LamTerm -> Term
-conversion vars (LVar xs) = case (elemIndex xs vars) of 
+conversion' vars (LVar xs) = case (elemIndex xs vars) of 
                                Nothing -> Free (Global xs)
                                Just n  -> (Bound n)
-conversion vars (App lt1 lt2)  = conversion' vars lt1  :@: conversion' vars lt2  
-conversion vars (Abs var lt)  = Lam conversion' (var:vars) lt 
+conversion' vars (App lt1 lt2)  = conversion' vars lt1  :@: conversion' vars lt2  
+conversion' vars (Abs var lt)  = Lam (conversion' (var:vars) lt) 
 -------------------------------
 -------------------------------
 -- Sección 3
 -------------------------------
 
 vapp :: Value -> Value -> Value
-vapp = undefined
+vapp (VLam f) v = f v
+vapp (VNeutral neu)  y = VNeutral(NApp neu y) 
 
 eval :: NameEnv Value -> Term -> Value
 eval e t = eval' t (e, [])
@@ -41,9 +42,4 @@ eval' _          _         = undefined
 
 quote :: Value -> Term
 quote = undefined
-
-
-
-
-
 
