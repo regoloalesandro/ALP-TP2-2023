@@ -33,13 +33,21 @@ eval e t = eval' t (e, [])
 
 eval' :: Term -> (NameEnv Value, [Value]) -> Value
 eval' (Bound ii) (_, lEnv) = lEnv !! ii
-eval' _          _         = undefined
+eval' (Free name) (nE, lEnv) = nameF name nE
+eval' (x :@: y) (nE, lEnv) = vapp (eval' x (nE, lEnv)) (eval' y (nE, lEnv))
+eval' (Lam x) (nE, lEnv) = VLam (\u -> eval' x (nE, u:lEnv))
 
+nameF :: Name -> NameEnv Value -> Value
+nameF x ((n,v):ns) = if x == n then v else nameF x ns
 
 --------------------------------
 -- Sección 4 - Mostrando Valores
 --------------------------------
-
 quote :: Value -> Term
-quote = undefined
+quote val = quote' val 0
 
+quote' :: Value -> Int -> Term
+quote' (VLam f) i = Lam ((quote' (f (VNeutral (NFree (Quote i)))) (i+1)))
+quote' (VNeutral (NFree (Quote x))) i =  Bound (i - x - 1)
+quote' (VNeutral (NFree (Global s))) i =  Free (Global s)
+quote' (VNeutral (NApp neu val)) i = (quote' (VNeutral neu) i) :@: (quote' val i)
