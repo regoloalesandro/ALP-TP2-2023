@@ -1,0 +1,15 @@
+def resta = \x y . y pred x
+
+def modAux = Y (\f x y .(is0 (resta x y))
+                            ((is0 (resta y x)) zero x) 
+                            (f (resta x y) y) )
+
+def mod = \x y . (is0 (resta x y)) zero (modAux x y)
+
+def divAux = Y (\f n c. (is0 c) 
+                        nil 
+                        ((is0 (mod n c))
+                            (cons c (f n (pred c)))
+                            (f n (pred c))))
+
+def divisores = \n . divAux n (pred n)
