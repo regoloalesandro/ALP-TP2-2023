@@ -1,7 +1,7 @@
 /mnt/c/Users/Spole/Desktop/ALP/ALP-TP2-2023/TP2/src/Untyped.hs:
-  hash: 3c124a3ec6f9408316bc35a20f6ee014fb8799513a068da2f84cbd33ec264905
-  size: 1861
-  modtime: 1696531988
+  hash: 1fd04215127b83fe575d9516a8677edfa1cc66261f432b2559772bef6489ea70
+  size: 1796
+  modtime: 1696974387
 /mnt/c/Users/Spole/Desktop/ALP/ALP-TP2-2023/TP2/src/PrettyPrinter.hs:
   hash: d65945f9037bea06b63cb6a39ccea52b83a5e35bc91145d2ec429d466ba67793
   size: 2622
@@ -19,9 +19,9 @@
   size: 3044
   modtime: 1696450779
 /mnt/c/Users/Spole/Desktop/ALP/ALP-TP2-2023/TP2/src/Parser.hs:
-  hash: 0468df1a29f3e47354e821c327561fd6deb252a311da97ccb7aa654036c47a39
-  size: 2294
-  modtime: 1696450779
+  hash: 4900f171097de4ba7552817c51674a71ecd8e2e6a26284532a7331fd771703e2
+  size: 2517
+  modtime: 1696975874
 /mnt/c/Users/Spole/Desktop/ALP/ALP-TP2-2023/TP2/package.yaml:
   hash: 3ce16879d575c5207e39fba4c8254fb79db13d8cfe7ab62a60644a6f51c1531c
   size: 1105

@@ -19,7 +19,7 @@ conversion' vars (LVar xs) = case (elemIndex xs vars) of
                                Just n  -> (Bound n)
 conversion' vars (App lt1 lt2)  = conversion' vars lt1  :@: conversion' vars lt2  
 conversion' vars (Abs var lt)  = Lam (conversion' (var:vars) lt) 
--------------------------------
+
 -------------------------------
 -- Sección 3
 -------------------------------
